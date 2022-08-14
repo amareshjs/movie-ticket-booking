@@ -1,0 +1,96 @@
+<section class="hero d-flex align-items-end" id="home">
+  <div class="container">
+    <div class="row text">
+      <div class="col-lg-7">
+        <p class="name">{{ movieData[0].name }}</p>
+        <div class="details d-flex">
+          <p>{{ movieData[0].gener }}</p>
+          <p class="mx-3">
+            <i class="fa-solid fa-stopwatch mx-1"></i
+            >{{ movieData[0].duration }}
+          </p>
+        </div>
+
+        <div class="mt-5 pt-2">
+          <button class="btn button">Book Now</button>
+          <button class="btn button m-4">Book Now</button>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="content">
+          <div>
+            <p>{{ movieData[0].director }} : <span>DIRECTOR</span></p>
+            <p>{{ movieData[0].starcast }} : <span>STARCASTS</span></p>
+            <p>{{ movieData[0].disscription }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- movie slider-------------------------- -->
+
+<div class="container mt-5">
+  <p class="text heading">Movies</p>
+  <div
+    id="carouselExampleInterval"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <div class="row">
+          <div
+            class="col-md-3 mb-3"
+            *ngFor="let movie of movieData.slice(0, 4)"
+          >
+            <app-card [movie]="movie"></app-card>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <div class="row">
+          <div
+            class="col-md-3 mb-3"
+            *ngFor="let movie of movieData.slice(4, 8)"
+          >
+            <app-card [movie]="movie"></app-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ---------------------play slider---------- -->
+<div class="container mt-5 mb-5">
+  <p class="text heading">Plays</p>
+  <div
+    id="carouselExampleInterval"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="5000">
+        <div class="row">
+          <div
+            class="col-md-3 mb-3"
+            *ngFor="let movie of movieData.slice(0, 4)"
+          >
+            <app-card [movie]="movie"></app-card>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <div class="row">
+          <div
+            class="col-md-3 mb-3"
+            *ngFor="let movie of movieData.slice(4, 8)"
+          >
+            <app-card [movie]="movie"></app-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

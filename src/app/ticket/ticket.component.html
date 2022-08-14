@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="main-content">
+    <div class="innerContainer">
+      <div class="movie">
+        <h3 class="movieTitle">{{ movieTitle }}</h3>
+        <div class="movieDetails">{{ screen }} - {{ time }}</div>
+      </div>
+
+      <!-- Showing a static legend bar -->
+      <div class="legend">
+        <span class="fa-solid fa-couch freeSeat px-2"></span> FREE
+        <span class="fa-solid fa-couch reservedSeat px-2"></span>
+        TAKEN
+        <span class="fa-solid fa-couch selectedSeat px-2"></span>
+        SELECTED
+      </div>
+
+      <p class="font14 marginTop5">SCREEN THIS WAY</p>
+      <div class="screen"></div>
+
+      <!-- Generate the seating grid -->
+      <div *ngFor="let row of rows">
+        <span
+          class="seat"
+          *ngFor="let col of cols"
+          (click)="seatClicked(row + col)"
+          [ngSwitch]="getStatus(row + col)"
+        >
+          <span
+            *ngSwitchCase="'selected'"
+            class="fa-solid fa-couch selectedSeat m-2"
+          ></span>
+          <span
+            *ngSwitchCase="'reserved'"
+            class="fa-solid fa-couch reservedSeat m-2"
+          ></span>
+          <span *ngSwitchDefault class="fa-solid fa-couch freeSeat m-2"></span>
+        </span>
+      </div>
+
+      <!-- Structural directive - only visible on selection -->
+      <div *ngIf="selected.length > 0" class="font14 my-5">
+        <div class="wordWrap">
+          SEATS RESERVED : {{ selected.length }}
+          <span class="count">({{ selected }})</span>
+        </div>
+        <div>
+          PRICE : {{ ticketPrice }} * {{ selected.length }} = {{ currency }}.{{
+            ticketPrice * selected.length
+          }}
+        </div>
+        <div>CONVENIENCE FEE : {{ currency }}.{{ convFee }}</div>
+        <div>
+          TOTAL : {{ currency }}.{{ ticketPrice * selected.length + convFee }}
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="buttonBar mt-5">
+        <button
+          (click)="clearSelected()"
+          [disabled]="selected.length === 0"
+          class="btn btn-default btn-sm"
+        >
+          Clear
+        </button>
+        <button
+          (click)="showSelected()"
+          [disabled]="selected.length === 0"
+          class="btn btn-success btn-sm"
+        >
+          Buy Tickets
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

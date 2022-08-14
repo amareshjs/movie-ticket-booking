@@ -1,0 +1,8 @@
+<div class="container mt-5">
+  <p class="text heading">Plays</p>
+  <div class="row">
+    <div class="col-md-3 mb-3" *ngFor="let movie of playsData">
+      <app-card [movie]="movie"></app-card>
+    </div>
+  </div>
+</div>

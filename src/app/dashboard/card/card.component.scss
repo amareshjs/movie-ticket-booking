@@ -1,0 +1,10 @@
+@import "../../../variable.scss";
+.card {
+  border: 5px solid $background-secendory;
+  border-radius: 11px;
+  width: 100%;
+}
+.card-body {
+  background-color: $background-secendory;
+  color: $secendory-color;
+}

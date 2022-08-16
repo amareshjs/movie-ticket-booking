@@ -1,0 +1,19 @@
+@import "../../../variable.scss";
+
+.form-validation {
+  color: $primary-color;
+  font-size: 15px;
+}
+
+.main-content {
+  background-color: $background-secendory;
+  border-radius: 20px;
+}
+.container {
+  margin-top: 5%;
+  justify-content: center;
+  align-items: center;
+}
+.text {
+  color: $primary-color;
+}

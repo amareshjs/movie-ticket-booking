@@ -1,0 +1,87 @@
+<div class="confirm-page">
+  <div class="container d-flex">
+    <div class="main-content p-5">
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <div class="left-content">
+            <div>
+              <div class="card mb-3" style="max-width: 540px">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img
+                      [src]="movie.image"
+                      class="img-fluid rounded-start"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ movie.name }}</h5>
+                      <p class="card-text">
+                        {{ movie.director }}
+                      </p>
+                      <p class="card-text">
+                        <small class="text-muted">{{ seatNo }}</small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="right-content text">
+            <form [formGroup]="bookSeat">
+              <div class="mb-3">
+                <label for="userName" class="form-label">Enter Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userName"
+                  name="userName"
+                  formControlName="userName"
+                />
+                <span
+                  class="form-validation"
+                  *ngIf="userName && userName.invalid && userName.touched"
+                  >This Field is Required Only Alphabets.</span
+                >
+              </div>
+              <div class="mb-3">
+                <label for="userEmail" class="form-label">Enter Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userEmail"
+                  name="userEmail"
+                  formControlName="userEmail"
+                />
+                <span
+                  class="form-validation"
+                  *ngIf="userEmail && userEmail.invalid && userEmail.touched"
+                  >Enter Correct Email.</span
+                >
+              </div>
+              <div>
+                <button
+                  (click)="book(bookSeat.value)"
+                  [disabled]="bookSeat.invalid"
+                  class="btn button mx-3"
+                >
+                  Buy Tickets
+                </button>
+                <button
+                  [routerLink]="'/ticket/ticket/' + movie.id"
+                  class="btn button mx-3"
+                >
+                  cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

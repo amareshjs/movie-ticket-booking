@@ -8,3 +8,14 @@
   background-color: $background-secendory;
   color: $secendory-color;
 }
+.button {
+  width: 100%;
+}
+@media (max-width: 992px) {
+  .card-title {
+    font-size: 13px;
+  }
+  .button {
+    font-size: 15px;
+  }
+}

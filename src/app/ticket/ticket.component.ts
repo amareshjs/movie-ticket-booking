@@ -1,26 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { isEmpty } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../services/common.service';
+import { MovieApiService } from '../services/movie-api.service';
+import { SeatsApiService } from '../services/seats-api.service';
 
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
   styleUrls: ['./ticket.component.scss']
 })
-export class TicketComponent implements OnInit {
-
-  ngOnInit(): void {
+export class TicketComponent implements OnInit, OnDestroy {
+  constructor(private _movieApiService: MovieApiService,
+    private _seatsApiService: SeatsApiService,
+    private _commonService: CommonService,
+    private router: Router,
+    private route: ActivatedRoute) { }
+  ngOnDestroy(): void {
+    this._commonService.auth.next(false);
   }
 
-  //variable declarations
-  movieTitle: string = "Captain America: The Winter Soldier";
-  screen: string = "LUXE CINEMAS";
-  time: string = "FRI, 6:45PM"
+  ngOnInit(): void {
+    this.movieId = this.route.snapshot.params['id'];
+    this._movieApiService.getOneMovie(this.movieId).subscribe((res) => {
+      this.movieData = res;
+    })
+    this._seatsApiService.getSeats(this.movieId).subscribe((res) => {
+      this.getMergedArray(res)
+    })
+  }
+  movieId: any
+  movieData: any
 
   rows: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   cols: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  reserved: string[] = ['A2', 'A3', 'F5', 'F1', 'F2', 'F6', 'F7', 'F8', 'H1', 'H2', 'H3', 'H4'];
+  reserved: string[] = [];
   selected: string[] = [];
 
   ticketPrice: number = 120;
@@ -39,6 +53,16 @@ export class TicketComponent implements OnInit {
     }
 
   }
+  //return merged array of reserved seats
+  getMergedArray(data: any[]) {
+    data.forEach(element => {
+
+      this.reserved = this.reserved.concat(element.seats)
+
+    });
+  }
+
+
   //clear handler
   clearSelected() {
     this.selected = [];
@@ -59,7 +83,10 @@ export class TicketComponent implements OnInit {
   //Buy button handler
   showSelected() {
     if (this.selected.length > 0) {
-      alert("Selected Seats: " + this.selected + "\nTotal: " + (this.ticketPrice * this.selected.length + this.convFee));
+      this._commonService.auth.next(true);
+      this._commonService.seats.next(this.selected);
+      // alert("Selected Seats: " + this.selected + "\nTotal: " + (this.ticketPrice * this.selected.length + this.convFee));
+      this.router.navigateByUrl("ticket/confirm/" + this.movieId);
     } else {
       alert("No seats selected!");
     }
@@ -83,56 +110,6 @@ export class TicketComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-  //   addAdvertise: FormGroup;
-  //   numbers: number[];
-
-  //   constructor(fb: FormBuilder) {
-  //     this.numbers = Array(5 - 1 + 1).fill(0 - 5).map((_, idx) => 0 + idx)
-  //     // this.numbers = Array(25 - 1 + 1).fill(0 - 25).map((_, idx) => 0 + idx)
-  //     let group: any
-  //     for (let i = 1; i < 6; i++) {
-  //       group["a" + i] = [""];
-  //     }
-  //     for (let i = 1; i < 6; i++) {
-  //       group["b" + i] = [""];
-  //     }
-  //     this.addAdvertise = fb.group(group);
-  //     for (let i = 1; i < 6; i++) {
-  //       group["c" + i] = [""];
-  //     }
-  //     this.addAdvertise = fb.group(group);
-  //     for (let i = 1; i < 6; i++) {
-  //       group["d" + i] = [""];
-  //     }
-  //     this.addAdvertise = fb.group(group);
-  //     for (let i = 1; i < 6; i++) {
-  //       group["e" + i] = [""];
-  //     }
-  //     this.addAdvertise = fb.group(group);
-
-  //   }
-
-
-  // click(data: any) {
-  //   let num: number[] = []
-  //   console.log(data);
-  //   console.log(JSON.stringify(data))
-  //   for (let i = 0; i < 25; i++) {
-  //     console.log(typeof (data[i]))
-  //     if (data[i] != "") {
-
-  //       num.push(data[i])
-  //     }
-  //   }
-  //   console.log(num)
-  // }
 
 
 

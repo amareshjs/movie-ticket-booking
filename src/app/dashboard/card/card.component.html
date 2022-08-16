@@ -3,7 +3,9 @@
     <img class="card-img-top" [src]="movie.image" alt="Card image cap" />
     <div class="card-body">
       <h5 class="card-title">{{ movie.name }}</h5>
-      <a routerLink="/ticket" class="btn button">Book Tickets</a>
+      <a [routerLink]="'/ticket/ticket/' + movie.id" class="btn button"
+        >Book Tickets</a
+      >
     </div>
   </div>
 </div>

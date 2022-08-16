@@ -7,17 +7,28 @@ import { MovieApiService } from '../services/movie-api.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  playsData: any[] = [];
 
+  movieData: any[] = [];
   constructor(private _movieApiService: MovieApiService) { }
-  movieData: any
 
   ngOnInit(): void {
 
     this._movieApiService.getMovie().subscribe((res) => {
-      console.log(res)
-      this.movieData = res
+      this.getFilterd(res);
     })
 
+  }
+
+  getFilterd(data: any) {
+    data.filter((element: any) => {
+      if (element.type === "play") {
+        this.playsData.push(element)
+      } else if (element.type === "movie") {
+        this.movieData.push(element)
+      }
+
+    })
   }
 
 }

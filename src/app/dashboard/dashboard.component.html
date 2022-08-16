@@ -12,8 +12,11 @@
         </div>
 
         <div class="mt-5 pt-2">
-          <button class="btn button">Book Now</button>
-          <button class="btn button m-4">Book Now</button>
+          <a
+            [routerLink]="'/ticket/ticket/' + movieData[0].id"
+            class="btn button"
+            >Book Tickets</a
+          >
         </div>
       </div>
       <div class="col-lg-5">
@@ -75,7 +78,7 @@
         <div class="row">
           <div
             class="col-md-3 mb-3"
-            *ngFor="let movie of movieData.slice(0, 4)"
+            *ngFor="let movie of playsData.slice(0, 4)"
           >
             <app-card [movie]="movie"></app-card>
           </div>
@@ -85,7 +88,7 @@
         <div class="row">
           <div
             class="col-md-3 mb-3"
-            *ngFor="let movie of movieData.slice(4, 8)"
+            *ngFor="let movie of playsData.slice(4, 8)"
           >
             <app-card [movie]="movie"></app-card>
           </div>

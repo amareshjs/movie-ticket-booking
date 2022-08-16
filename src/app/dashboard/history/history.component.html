@@ -1,0 +1,22 @@
+<div class="container">
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Movie Id</th>
+          <th scope="col">seats</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookingData; let i; as: index">
+          <th scope="row">{{ booking.id }}</th>
+          <td>{{ booking.customerName }}</td>
+          <td>{{ booking.movieId }}</td>
+          <td>{{ booking.seats }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

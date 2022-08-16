@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HistoryComponent } from './dashboard/history/history.component';
 
 const routes: Routes = [
 
@@ -16,8 +17,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 
-  { path: 'ticket', loadChildren: () => import('./ticket/ticket.module').then(m => m.TicketModule) }
-
+  { path: 'ticket', loadChildren: () => import('./ticket/ticket.module').then(m => m.TicketModule) },
+  {
+    path: '**', component: HistoryComponent
+  }
 ];
 
 @NgModule({

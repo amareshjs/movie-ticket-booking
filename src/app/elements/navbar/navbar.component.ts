@@ -8,11 +8,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-  click() {
-    this.route.navigateByUrl("/movies")
   }
 }

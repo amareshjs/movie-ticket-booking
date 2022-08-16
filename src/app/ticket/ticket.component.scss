@@ -5,33 +5,27 @@
 .font16 {
   font-size: 16px;
 }
-.marginTop5 {
-  margin-top: 5px;
-}
-.marginTB10 {
-  margin: 10px 0px;
-}
-.wordWrap {
-  word-break: break-all;
-}
+
 /* End CSS Helpers */
 .container .main-content {
   background: $background-secendory;
+  border-radius: 10px;
 }
 .innerContainer {
   color: #fff;
   text-align: center;
+  padding: 4%;
 }
 .movie {
   margin: -10px -5px 10px -5px;
   height: 70px;
-  //   background: hsla(216, 81%, 53%, 0.65);
 }
 .movieDetails {
   font-size: 15px;
   margin-top: -3px;
 }
 .movieTitle {
+  color: $primary-color;
   font-size: 20px;
   padding-top: 10px;
   margin-top: -3px;
@@ -47,14 +41,14 @@
   padding-left: 15px;
 }
 .screen {
-  background: hsla(216, 72%, 50%, 0.65);
+  background: $primary-color;
   height: 3px;
   border-radius: 15px;
   margin: -5px 50px 10px;
   box-shadow: 0px 3px 6px #fff;
 }
 .reservedSeat {
-  color: #ce4844;
+  color: $primary-color;
 }
 .selectedSeat {
   color: #5cb85c;

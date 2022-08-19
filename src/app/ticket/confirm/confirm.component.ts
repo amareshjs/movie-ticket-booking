@@ -36,7 +36,7 @@ export class ConfirmComponent implements OnInit {
     try {
 
       this._movieApiService.getOneMovie(this.route.snapshot.params['id']).subscribe((res) => {
-        this.movie = res
+        this.movie = res.data
       })
     } catch (error) {
       console.log(error)

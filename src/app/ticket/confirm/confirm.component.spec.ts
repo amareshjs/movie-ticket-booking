@@ -8,9 +8,9 @@ describe('ConfirmComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConfirmComponent ]
+      declarations: [ConfirmComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +21,9 @@ describe('ConfirmComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should return username', () => {
+    expect(component).toBeTruthy();
+    expect(component.userName).toBeTruthy();
   });
 });

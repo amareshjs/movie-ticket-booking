@@ -14,13 +14,13 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this._movieApiService.getMovie().subscribe((res) => {
-      this.allData = res;
+      this.allData = res.data;
       this.getFilterd(this.allData)
     })
   }
   getFilterd(data: any) {
     data.filter((element: any) => {
-      if (element.type === "movie") {
+      if (element.type === "Movie") {
         this.movieData.push(element)
       }
     })

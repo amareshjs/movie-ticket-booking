@@ -1,6 +1,6 @@
 <section class="hero d-flex align-items-end" id="home">
   <div class="container">
-    <div class="row text">
+    <div class="row text mb-5">
       <div class="col-lg-7">
         <p class="name">{{ movieData[0].name }}</p>
         <div class="details d-flex">
@@ -9,14 +9,6 @@
             <i class="fa-solid fa-stopwatch mx-1"></i
             >{{ movieData[0].duration }}
           </p>
-        </div>
-
-        <div class="mt-5 pt-2">
-          <a
-            [routerLink]="'/ticket/ticket/' + movieData[0].id"
-            class="btn button"
-            >Book Tickets</a
-          >
         </div>
       </div>
       <div class="col-lg-5">

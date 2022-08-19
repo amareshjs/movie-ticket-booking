@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://localhost:8080/movies/"
-
+  baseUrl: "http://localhost:8080/api/v1/",
+  movieUrl: "http://localhost:8080/api/v1/movies/",
+  bookingUrl: "http://localhost:8080/api/v1/bookings",
+  seatsUrl: "http://localhost:8080/api/v1/seats/"
 };
 
 /*

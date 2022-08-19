@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
     this._movieApiService.getMovie().subscribe((res) => {
-      this.getFilterd(res);
+      this.getFilterd(res.data);
     })
 
   }
@@ -24,11 +24,12 @@ export class DashboardComponent implements OnInit {
     data.filter((element: any) => {
       if (element.type === "play") {
         this.playsData.push(element)
-      } else if (element.type === "movie") {
+      } else if (element.type === "Movie") {
         this.movieData.push(element)
       }
 
     })
+
   }
 
 }

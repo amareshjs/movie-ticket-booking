@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CommonService } from '../services/common.service';
 
@@ -7,7 +7,7 @@ import { CommonService } from '../services/common.service';
   providedIn: 'root'
 })
 export class AuthGuardGuard implements CanActivate {
-  constructor(private _commonService: CommonService) {
+  constructor(private _commonService: CommonService, private router: Router) {
 
   }
   canActivate(
@@ -19,6 +19,7 @@ export class AuthGuardGuard implements CanActivate {
       return true;
     }
     else {
+      this.router.navigate(['**']);
       return false
     }
   }

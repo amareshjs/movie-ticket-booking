@@ -22,10 +22,10 @@ export class TicketComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.movieId = this.route.snapshot.params['id'];
     this._movieApiService.getOneMovie(this.movieId).subscribe((res) => {
-      this.movieData = res;
+      this.movieData = res.data;
     })
     this._seatsApiService.getSeats(this.movieId).subscribe((res) => {
-      this.getMergedArray(res)
+      this.getMergedArray(res.data)
     })
   }
   movieId: any
@@ -36,11 +36,6 @@ export class TicketComponent implements OnInit, OnDestroy {
 
   reserved: string[] = [];
   selected: string[] = [];
-
-  ticketPrice: number = 120;
-  convFee: number = 30;
-  totalPrice: number = 0;
-  currency: string = "Rs";
 
   //return status of each seat
   getStatus(seatPos: string) {
@@ -85,7 +80,6 @@ export class TicketComponent implements OnInit, OnDestroy {
     if (this.selected.length > 0) {
       this._commonService.auth.next(true);
       this._commonService.seats.next(this.selected);
-      // alert("Selected Seats: " + this.selected + "\nTotal: " + (this.ticketPrice * this.selected.length + this.convFee));
       this.router.navigateByUrl("ticket/confirm/" + this.movieId);
     } else {
       alert("No seats selected!");

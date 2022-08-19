@@ -10,10 +10,7 @@ export class SeatsApiService {
 
   constructor(private http: HttpClient) { }
   getSeats(data: any): Observable<any> {
-    return this.http.get(`${environment.baseUrl}seats/${data}`);
+    return this.http.get(`${environment.seatsUrl}` + data);
   }
-
-
-
 }
 

@@ -11,18 +11,18 @@ export class MovieApiService {
   constructor(private http: HttpClient) { }
 
   getMovie(): Observable<any> {
-    return this.http.get(`${environment.baseUrl}`);
+    return this.http.get(`${environment.movieUrl}`);
   }
 
   getOneMovie(data: any): Observable<any> {
-    return this.http.get(`${environment.baseUrl + data}`);
+    return this.http.get(`${environment.movieUrl + data}`);
   }
 
   bookTickets(data: any): Observable<any> {
-    return this.http.post(`${environment.baseUrl}book`, data)
+    return this.http.post(`${environment.bookingUrl}`, data)
   }
 
   getBookings(): Observable<any> {
-    return this.http.get(`${environment.baseUrl}bookings`)
+    return this.http.get(`${environment.bookingUrl}`)
   }
 }

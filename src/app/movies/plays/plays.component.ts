@@ -14,7 +14,7 @@ export class PlaysComponent implements OnInit {
 
   ngOnInit(): void {
     this._movieApiService.getMovie().subscribe((res) => {
-      this.allData = res
+      this.allData = res.data
       this.getFilterd(this.allData)
     })
   }

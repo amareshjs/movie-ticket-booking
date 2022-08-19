@@ -15,7 +15,7 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
 
     this._movieApiService.getBookings().subscribe((res) => {
-      this.bookingData = res
+      this.bookingData = res.data
     })
 
   }
